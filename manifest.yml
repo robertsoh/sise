@@ -1,0 +1,8 @@
+---
+applications:
+- name: sise
+  memory: 250M
+  instances: 1
+  buildpack: python_buildpack
+  services:
+  - sise
