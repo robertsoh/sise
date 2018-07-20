@@ -25,6 +25,9 @@ DJANGO_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ubigeo',
+    'apps.facultades',
+    'apps.estudiantes',
 ]
 
 THIRD_PARTY_APPS = [
