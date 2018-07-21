@@ -1,7 +1,8 @@
 from django.db import models
-from ubigeo.models import Departamento, Provincia, Distrito
+from smart_selects.db_fields import ChainedForeignKey
 
 from apps.facultades.models import EAP
+from apps.ubigeo.models import Departamento, Provincia, Distrito
 
 
 class Grado(models.Model):
@@ -19,8 +20,20 @@ class Estudiante(models.Model):
     apellido_materno = models.CharField(max_length=100)
     fecha_nacimiento = models.DateField('Fecha de nacimiento')
     direccion_departamento = models.ForeignKey(Departamento)
-    direccion_provincia = models.ForeignKey(Provincia)
-    direccion_distrito = models.ForeignKey(Distrito)
+    direccion_provincia = ChainedForeignKey(
+        Provincia,
+        chained_field="direccion_departamento",
+        chained_model_field="departamento",
+        show_all=False,
+        auto_choose=True,
+        sort=True)
+    direccion_distrito = ChainedForeignKey(
+        Distrito,
+        chained_field="direccion_provincia",
+        chained_model_field="provincia",
+        show_all=False,
+        auto_choose=True,
+        sort=True)
     direccion = models.CharField(max_length=254)
     telefono = models.CharField(max_length=9)
     correo = models.EmailField(max_length=254)

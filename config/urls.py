@@ -5,6 +5,7 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^chaining/', include('smart_selects.urls')),
 ]
 
 handler403 = TemplateView.as_view(template_name='errors/403.html')

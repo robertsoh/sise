@@ -25,17 +25,18 @@ DJANGO_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ubigeo',
-    'apps.facultades',
-    'apps.estudiantes',
 ]
 
 THIRD_PARTY_APPS = [
     'crispy_forms',
+    'smart_selects',
 ]
 
 LOCAL_APPS = [
     'apps.common',
+    'apps.ubigeo',
+    'apps.facultades',
+    'apps.estudiantes',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -119,3 +120,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 LOGIN_URL = '/login/'
+
+USE_DJANGO_JQUERY = True
